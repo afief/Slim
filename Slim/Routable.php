@@ -88,9 +88,9 @@ abstract class Routable
      *
      * @return static
      */
-    public function add($callable)
+    public function add($callable, $args = [])
     {
-        $this->middleware[] = new DeferredCallable($callable, $this->container);
+        $this->middleware[] = new DeferredCallable($callable, $this->container, $args);
         return $this;
     }
     
