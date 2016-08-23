@@ -1,9 +1,9 @@
 {
-    "name": "slim/slim",
+    "name": "afief/slim",
     "type": "library",
-    "description": "Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs",
-    "keywords": ["framework","micro","api","router"],
-    "homepage": "http://slimframework.com",
+    "description": "This is a form repo of slim framework from slim/slim with some update like middleware arguments, return object response into a json string, etc. Slim is a PHP micro framework that helps you quickly write simple yet powerful web applications and APIs",
+    "keywords": ["framework","micro","api","router", "fork"],
+    "homepage": "https://github.com/afief/Slim",
     "license": "MIT",
     "authors": [
         {
@@ -25,6 +25,11 @@
             "name": "Gabriel Manricks",
             "email": "gmanricks@me.com",
             "homepage": "http://gabrielmanricks.com"
+        },
+        {
+            "name": "Afief Yona Ramadhana",
+            "email": "surat@afief.net",
+            "homepage": "http://afief.net"
         }
     ],
     "require": {

@@ -45,6 +45,25 @@ Going to http://localhost:8000/hello/world will now display "Hello, world".
 
 For more information on how to configure your web server, see the [Documentation](http://www.slimframework.com/docs/start/web-servers.html).
 
+## Additional Features
+
+- Return an object from controller into json string
+- Additional arguments for middleware
+```php
+$mw = function ($request, $response, $next, $arg1, $arg2) {
+    $response->getBody()->write($arg1);
+    $response = $next($request, $response);
+    $response->getBody()->write($arg2);
+
+    return $response;
+};
+
+$app->get('/hello/{name}', function ($request, $response, $args) {
+    $response->write("Hello, " . $args['name']);
+    return $response;
+})->add($mw, ['first_argument', 'second_argument']);
+```
+
 ## Tests
 
 To execute the test suite, you'll need phpunit.
