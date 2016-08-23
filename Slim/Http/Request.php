@@ -685,6 +685,27 @@ class Request extends Message implements ServerRequestInterface
     }
 
     /**
+     * Fetch cookie value from cookies sent by the client to the server.
+     *
+     * Note: This method is not part of the PSR-7 standard.
+     *
+     * @param string $key     The attribute name.
+     * @param mixed  $default Default value to return if the attribute does not exist.
+     *
+     * @return mixed
+     */
+    public function getCookieParam($key, $default = null)
+    {
+        $cookies = $this->getCookieParams();
+        $result = $default;
+        if (isset($cookies[$key])) {
+            $result = $cookies[$key];
+        }
+
+        return $result;
+    }
+
+    /**
      * Return an instance with the specified cookies.
      *
      * The data IS NOT REQUIRED to come from the $_COOKIE superglobal, but MUST
@@ -826,6 +847,22 @@ class Request extends Message implements ServerRequestInterface
     public function getServerParams()
     {
         return $this->serverParams;
+    }
+
+    /**
+     * Retrieve a server parameter.
+     *
+     * Note: This method is not part of the PSR-7 standard.
+     *
+     * @param  string $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public function getServerParam($key, $default = null)
+    {
+        $serverParams = $this->getServerParams();
+
+        return isset($serverParams[$key]) ? $serverParams[$key] : $default;
     }
 
     /*******************************************************************************

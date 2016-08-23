@@ -512,6 +512,20 @@ class RequestTest extends \PHPUnit_Framework_TestCase
      * Cookies
      ******************************************************************************/
 
+    public function testGetCookieParam()
+    {
+        $shouldBe = 'john';
+
+        $this->assertEquals($shouldBe, $this->requestFactory()->getCookieParam('user'));
+    }
+
+    public function testGetCookieParamWithDefault()
+    {
+        $shouldBe = 'bar';
+
+        $this->assertEquals($shouldBe, $this->requestFactory()->getCookieParam('foo', 'bar'));
+    }
+
     public function testGetCookieParams()
     {
         $shouldBe = [
@@ -623,6 +637,21 @@ class RequestTest extends \PHPUnit_Framework_TestCase
                 );
             }
         }
+    }
+
+    public function testGetServerParam()
+    {
+        $shouldBe = 'HTTP/1.1';
+        $request = $this->requestFactory(['SERVER_PROTOCOL' => 'HTTP/1.1']);
+
+        $this->assertEquals($shouldBe, $this->requestFactory()->getServerParam('SERVER_PROTOCOL'));
+    }
+
+    public function testGetServerParamWithDefault()
+    {
+        $shouldBe = 'bar';
+
+        $this->assertEquals($shouldBe, $this->requestFactory()->getServerParam('HTTP_NOT_EXIST', 'bar'));
     }
 
     /*******************************************************************************
